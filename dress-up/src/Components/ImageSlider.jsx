@@ -8,7 +8,7 @@ function ImageSlider({images}) {
       <Carousel showThumbs={false} autoPlay={true} interval={3000} infiniteLoop={true}>
         {images.map((URL, index) => (
           <div className="slide">
-            <img alt="sample_file" src={URL.url} key={index} />
+            <img alt="sample_file" key={index} src={URL.url}   />
           </div>
         ))}
       </Carousel>

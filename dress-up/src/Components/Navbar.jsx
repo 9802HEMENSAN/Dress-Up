@@ -23,10 +23,12 @@ import {
   } from '@chakra-ui/icons';
  
   import { Link as RouterLink } from 'react-router-dom';
-  import   logo1 from "./dressup.png"
+  import   logo1 from "./logo2.png"
   import { Image } from '@chakra-ui/react';
+ 
   export default function  Navbar() {
     const { isOpen, onToggle } = useDisclosure();
+ 
   
     return (
       <Box >
@@ -124,7 +126,7 @@ import {
           <Box key={navItem.label}   >
             <Popover trigger={'hover'} placement={'bottom-start'} >
               <PopoverTrigger>
-                <RouterLink  
+                <RouterLink  to={navItem.href} 
                   p={2}
                   href={navItem.href ?? '#'}
                   fontSize={'sm'}
@@ -149,7 +151,7 @@ import {
                   minW={'sm'} >
                   <Stack>
                     {navItem.children.map((child) => (
-                      <RouterLink to="/products" >  
+                      <RouterLink to={child.href} >  
                          <DesktopSubNav key={child.label} {...child} />
                       </RouterLink>
                     ))}
@@ -263,46 +265,40 @@ import {
  
   const NAV_ITEMS = [
     {
-      label: 'Products',
+      label: 'Men',
+      href : "/men",
       children: [
         {
           label: 'trending Products',
           subLabel: 'Top Deals',
-          href: '#',
+          href: '/men',
         },
         {
-          label: 'Electronics',
+          label: 'Kurta',
           subLabel: 'Unique technology',
-          href: '#',
+          href: '/men',
         },
       ],
     },
     {
-      label: 'Find Work',
+      label: 'Women',
+      href: "/women",
       children: [
         {
           label: 'Job Board',
           subLabel: 'Find your dream design job',
-          href: '#',
+          href: '/women',
         },
         {
           label: 'Projects',
           subLabel: 'An exclusive list for contract work',
-          href: '#',
+          href: '/women',
         },
       ],
     },
     {
-      label: 'Weekly ads',
-      href: '#',
-    },
-    {
-      label: 'Carrers',
-      href: '#',
-    },
-    {
-      label: 'login',
-      href: '#',
-    },
+      label: 'Kids',
+      href: '/kids',
+    } 
   ];
  

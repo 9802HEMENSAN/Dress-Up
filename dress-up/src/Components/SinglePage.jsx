@@ -16,13 +16,33 @@ import {
     List,
     ListItem,
   } from '@chakra-ui/react';
+import axios from 'axios';
+import { useContext } from 'react';
   import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
   import { MdLocalShipping } from 'react-icons/md';
   import { Link as RouterLink } from 'react-router-dom';
+import { AuthContext } from '../Context/AuthContextProvider';
 
   export default function SinglePage(props) {
+      const {authState} = useContext(AuthContext)
+    const {id, src,Category, discountPrice,MRP, discount } =props;
+ 
+    const handlePost=async ()=> {
+         try {
+           return axios({
+            method : "post" , 
+            url : `http://localhost:8080/cart`,
+            data :{ 
+              ...props,
+            "Quantity" : 1
+            }
+           }).then(( res)=> console.log(res.data) )
+         } catch (error) {
+           console.log("err") ; 
+         }
+    }
 
-    const {src,Category, discountPrice,MRP, discount } =props;
+
     return (
       <Container maxW={'7xl'}>
         <SimpleGrid
@@ -161,7 +181,7 @@ import {
                 </List>
               </Box>
             </Stack>
-           <RouterLink to="/cart"> 
+           <RouterLink to = "/cart" > 
             <Button
               rounded={'none'}
               w={'full'}
@@ -174,7 +194,7 @@ import {
               _hover={{
                 transform: 'translateY(2px)',
                 boxShadow: 'lg',
-              }}>
+              }} onClick={()=> handlePost()}>
               Add to cart
             </Button>
             </RouterLink>

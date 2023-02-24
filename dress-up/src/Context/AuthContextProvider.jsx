@@ -11,7 +11,7 @@ const AuthContextProvider = ({children}) => {
                                  token : null 
                                          })
 
-    const Login=({token})=>{
+    const Login=(token)=>{
         setState({
             isAuth : true,
             token : token
@@ -21,7 +21,7 @@ const AuthContextProvider = ({children}) => {
     const Logout = ()=> {
         setState({
             ...state,
-            isAuth : false,
+            isAuth :   false ,
             token : null 
         })
     }

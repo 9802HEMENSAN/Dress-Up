@@ -12,7 +12,9 @@ import {
     Text,
     useColorModeValue,
   } from '@chakra-ui/react';
+import axios from 'axios';
 import { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthContextProvider';
  
 const users={
@@ -21,8 +23,8 @@ const users={
 }
   export default function  Login() {
       const [User, setUser] = useState(users);
-      const {Login}=useContext(AuthContext);
-
+      const {Login,token }=useContext(AuthContext);
+          const   navigate =  useNavigate()
       const handleChange=(e)=>{
          const { name , value } = e.target; 
         
@@ -32,7 +34,26 @@ const users={
       const handleSubmit=(e)=>{
         e.preventDefault();
         
+        handlePost();
         console.log(User)
+      }
+
+      const handlePost=async()=>{
+        try {
+          return axios({
+            method : "post",
+            url : `https://reqres.in/api/login`,
+            data : User
+          }).then((res)=>{ 
+            if(res.data.token){
+              console.log(res.data.token)
+              Login(res.data.token)
+              navigate("/")
+            }
+          })
+        } catch (error) {
+          console.log("err")
+        }
       }
 
   const {email, password } = User;

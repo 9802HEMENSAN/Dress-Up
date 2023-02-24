@@ -14,6 +14,7 @@ import {
     useColorModeValue,
     useBreakpointValue,
     useDisclosure,
+    Input,
   } from '@chakra-ui/react';
   import {
     HamburgerIcon,
@@ -25,10 +26,12 @@ import {
   import { Link as RouterLink } from 'react-router-dom';
   import   logo1 from "./logo2.png"
   import { Image } from '@chakra-ui/react';
+import { useContext } from 'react';
+import { AuthContext } from '../Context/AuthContextProvider';
  
   export default function  Navbar() {
     const { isOpen, onToggle } = useDisclosure();
- 
+    const { authState ,   Logout }=useContext(AuthContext);
   
     return (
       <Box >
@@ -66,14 +69,27 @@ import {
               <DesktopNav />
             </Flex>
           </Flex>
-  
+              
           <Stack
             flex={{ base: 1, md: 0 }}
             justify={'flex-end'}
             direction={'row'}
             spacing={6}>
-
-           <RouterLink to="/register"> 
+                <Input type="text"   bg='white' w={300} placeholder="Search Items"
+                color="black" />
+          {authState.token ? <Button
+                   display={{ base: 'none', md: 'inline-flex' }}
+                   fontSize={'sm'}
+                   fontWeight={600}
+                   color={'white'}
+                   bg={'orange.500'}
+                   href={'#'}
+                   _hover={{
+                     bg: 'orange.400',
+                   }} 
+                  onClick={Logout} >
+                  Logout 
+                </Button> : <RouterLink to="/login"> 
                 <Button
                    display={{ base: 'none', md: 'inline-flex' }}
                    fontSize={'sm'}
@@ -84,12 +100,12 @@ import {
                    _hover={{
                      bg: 'orange.400',
                    }} >
-                  Sign Up
+                  Sign In
                 </Button>
             </RouterLink>
+           }
 
-
-
+            
             {/* <RouterLink to="/admin">  */}
             <Button
               display={{ base: 'none', md: 'inline-flex' }}

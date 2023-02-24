@@ -1,72 +1,96 @@
-import {
-    Box,
-    Flex,
-    Heading,
-    HStack,
-    Link,
-    Stack,
-    useColorModeValue as mode,
-  } from '@chakra-ui/react'
-//   import { CartItem } from './CartItem'
-//   import { CartOrderSummary } from './CartOrderSummary'
-//   import { cartData } from './_data'
-  
-  export const  CartPage = () => (
-    <Box
-      maxW={{
-        base: '3xl',
-        lg: '7xl',
-      }}
-      mx="auto"
-      px={{
-        base: '4',
-        md: '8',
-        lg: '12',
-      }}
-      py={{
-        base: '6',
-        md: '8',
-        lg: '12',
-      }}
-    >
-      <Stack
-        direction={{
-          base: 'column',
-          lg: 'row',
-        }}
-        align={{
-          lg: 'flex-start',
-        }}
-        spacing={{
-          base: '8',
-          md: '16',
-        }}
-      >
-        <Stack
-          spacing={{
-            base: '8',
-            md: '10',
-          }}
-          flex="2"
-        >
-          <Heading fontSize="2xl" fontWeight="extrabold">
-            Shopping Cart (3 items)
-          </Heading>
-  
-          <Stack spacing="6">
-            {/* {cartData.map((item) => (
-              <CartItem key={item.id} {...item} />
-            ))} */}
-          </Stack>
-        </Stack>
-  
-        <Flex direction="column" align="center" flex="1">
-          <CartOrderSummary />
-          <HStack mt="6" fontWeight="semibold">
-            <p>or</p>
-            <Link color={mode('blue.500', 'blue.200')}>Continue shopping</Link>
-          </HStack>
-        </Flex>
-      </Stack>
-    </Box>
-  )
+ import { Box, Button, Grid, GridItem, Heading, Image, Text } from '@chakra-ui/react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
+ import { Link as RouterLink } from 'react-router-dom'
+ const CartPage = () => {
+    const [data, setData] = useState([])
+    const [total, setTotal] = useState(0);
+
+   const getCartItems =async ()=> {
+    try {
+      return axios({
+       method : "get" , 
+       url : `http://localhost:8080/cart`,
+      }).then((res) =>  setData(res.data))
+    } catch (error) {
+      console.log("err") ; 
+    }
+}  
+
+const handleDelete = async (id)=>{
+     return axios({
+      method : "delete",
+      url : `http://localhost:8080/cart/${id}`
+     }).then(()=> getCartItems());
+}
+
+ 
+useEffect(() => {
+  getCartItems()
+}, [ ])
+
+// Total
+useEffect(()=>{
+  let Total=0;
+  data?.forEach((item)=>(
+   Total+= (+item.discountPrice) * (+item.Quantity)
+  ))
+   setTotal(Total)
+   console.log(typeof Total)
+},[data])
+ 
+ 
+
+const handleQuantity=(id, Quantity , val)=>{
+    data.map((item, index)=> (
+    item.id ===id ?   (Quantity = Quantity + val ) :  Quantity 
+    ))
+  axios.patch(`http://localhost:8080/cart/${id}`,{
+    Quantity : Quantity
+  }).then(()=> getCartItems())
+   
+}
+
+
+
+   return (
+    <Box> 
+      <Heading>Cart Page</Heading>
+     <Grid  gap={5}>
+         {
+          data?.map((cart)=>(
+            <GridItem key={cart.id} border = {"1px solid red"} display = "flex"   >
+              <Image src={cart.src} alt="cart image" h={300} w= {300} />
+              <Box> 
+               <Text fontSize={25}>{cart.Category}</Text>
+               <Text fontSize={20}>Price : {cart.discountPrice}</Text>
+               <Text fontSize={20}>discount :{`${cart.discount}% Off`}</Text>
+               <Text fontSize={17}>{`Shipping`}</Text>
+               <Text>International orders usually arrive within <br />
+                   5–13 business days. We'll give you shipping    <br />
+                    dates in checkout.</Text>
+               {/* Buttons Quantity */}
+               <Box>
+                <Button isDisabled = {cart.Quantity===1} onClick={()=> handleQuantity(cart.id , cart.Quantity ,  -1)}>-</Button>
+
+                <Button isDisabled>{cart.Quantity}</Button>
+
+                <Button onClick={()=> handleQuantity(cart.id , cart.Quantity , 1)}>+</Button>
+
+               </Box>
+               <Button onClick={()=> handleDelete(cart.id)}> Remove</Button>
+               </Box>
+            </GridItem>
+          ))
+         }
+         <Text fontSize={20}>Subtotal : {total}</Text >
+         <RouterLink to="/address"> 
+         <Button bg="green" >CheckOut</Button>
+         </RouterLink>
+     </Grid>
+     </Box>
+   )
+ }
+ 
+ export default CartPage
+ 

@@ -4,7 +4,8 @@ import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import PrivateRoute from '../Components/PrivateRoute'
 import AddressPage from '../Pages/AddressPage'
-import AdminPage from '../Pages/AdminPage'
+import Admin from '../Pages/Admin'
+ 
 import CartPage from '../Pages/CartPage'
  
 import Home from '../Pages/Home'
@@ -30,8 +31,9 @@ const AllRoutes = () => {
             <Route path="/men/:id" element={<SingleUserPage/>}></Route>
             <Route path="/women/:id" element={<SingleUserPage/>}></Route>
             <Route path="/kids/:id" element={<SingleUserPage/>}></Route>
+            
             <Route path="*" element={<NotFound/>}></Route>
-
+            
             <Route path="/cart" element={       
                       <CartPage/>  
             }></Route>
@@ -42,7 +44,7 @@ const AllRoutes = () => {
                       <PaymentPage/>  
             }></Route>
             <Route path="/admin" element={       
-                      <AdminPage/>  
+                      <Admin/>  
             }></Route>
 
         </Routes>

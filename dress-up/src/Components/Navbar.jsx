@@ -24,6 +24,7 @@ import {
   } from '@chakra-ui/icons';
  
   import { Link as RouterLink } from 'react-router-dom';
+  
   import   logo1 from "./logo2.png"
   import { Image } from '@chakra-ui/react';
 import { useContext } from 'react';
@@ -106,7 +107,7 @@ import { AuthContext } from '../Context/AuthContextProvider';
            }
 
             
-            {/* <RouterLink to="/admin">  */}
+            <RouterLink to="/admin"> 
             <Button
               display={{ base: 'none', md: 'inline-flex' }}
               fontSize={'sm'}
@@ -120,7 +121,7 @@ import { AuthContext } from '../Context/AuthContextProvider';
               Admin
                
             </Button>
-            {/* </RouterLink> */}
+            </RouterLink>
           </Stack>
         </Flex>
   

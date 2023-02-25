@@ -62,7 +62,7 @@ const initAddress= {
 
   return (
     <div  > 
-      <Heading> Secure Checkout </Heading>
+      <Heading>Welcome to Payment Page</Heading>
       <Text>powered by Borderfree</Text>
       <Text>Already have a Borderfree account? Click here. </Text>
  

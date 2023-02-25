@@ -4,12 +4,14 @@ import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import PrivateRoute from '../Components/PrivateRoute'
 import AddressPage from '../Pages/AddressPage'
+import AdminPage from '../Pages/AdminPage'
 import CartPage from '../Pages/CartPage'
  
 import Home from '../Pages/Home'
 import Kids from '../Pages/Kids'
 import Login from '../Pages/Login'
 import Men from '../Pages/Men'
+import NotFound from '../Pages/NotFound'
 import PaymentPage from '../Pages/PaymentPage'
 import SignUp from '../Pages/SignUp'
 import SingleUserPage from '../Pages/SingleUserPage'
@@ -28,6 +30,7 @@ const AllRoutes = () => {
             <Route path="/men/:id" element={<SingleUserPage/>}></Route>
             <Route path="/women/:id" element={<SingleUserPage/>}></Route>
             <Route path="/kids/:id" element={<SingleUserPage/>}></Route>
+            <Route path="*" element={<NotFound/>}></Route>
 
             <Route path="/cart" element={       
                       <CartPage/>  
@@ -37,6 +40,9 @@ const AllRoutes = () => {
             }></Route>
             <Route path="/payment" element={       
                       <PaymentPage/>  
+            }></Route>
+            <Route path="/admin" element={       
+                      <AdminPage/>  
             }></Route>
 
         </Routes>

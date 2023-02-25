@@ -79,9 +79,9 @@ const PaymentPage = () => {
                         bg: "green.500",
                       }}
                       isDisabled={state.name==="" && state.CVV==="" && state.Expiry===""  && state.card_Number===""}
-                     
+                      
                     >
-                      < AlertDialogExample/>
+           < AlertDialogExample/> 
                     </Button>
                   </Stack>
                 </Stack>

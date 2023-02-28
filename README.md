@@ -1,7 +1,7 @@
 # potent-toothbrush-7925!
 
-Home-Page
-[Screenshot (2043)](https://user-images.githubusercontent.com/111531676/221750710-864f311b-b1d3-4456-838f-0fa7710ac63b.png)
+Home-Page 
+![Screenshot (2043)](https://user-images.githubusercontent.com/111531676/221751824-b3bb73fe-ba78-4c56-8ced-4f671d3dbfce.png)
 
 Logo
 ![dressup](https://user-images.githubusercontent.com/111531676/221750345-12ceff28-25f8-4403-949c-71976b6620ba.png)

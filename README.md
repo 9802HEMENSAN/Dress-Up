@@ -1,4 +1,12 @@
-# potent-toothbrush-7925!
+Project Name: Dress-up.com
+Description:
+Dress-up.com is an e-commerce website that aims to provide the new generation with the latest fashion trends. Our platform offers a wide range of trendy clothing and accessories to elevate your style game. Stay ahead of the fashion curve with our carefully curated selection of new arrivals, tailored specifically for the fashion-forward individuals of today.
+
+Author : - 
+Hemensan Mahilange 
+
+Linkdin:- https://www.linkedin.com/in/hemensan-mahilange-4a9499242/
+Github : - https://github.com/9802HEMENSAN
  
 Home-Page 
 ![Screenshot (2043)](https://user-images.githubusercontent.com/111531676/221751824-b3bb73fe-ba78-4c56-8ced-4f671d3dbfce.png)

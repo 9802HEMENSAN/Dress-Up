@@ -32,6 +32,21 @@ Linkdin:- https://www.linkedin.com/in/hemensan-mahilange-4a9499242/
 - #### For live Project : -
   - `Netlify`
 
+---
+
+## Features ✨:-
+
+---
+
+| Serial No | Feature                                                                           |
+| --------- | --------------------------------------------------------------------------------- |
+| 1         | User signup, User Login, Admin Login                                              |
+| 2         | Products Page with Filter by different Category ,Pagination, Sort Functionalities |
+| 3         | SinglePage & payment feature                                              |
+| 4         | cart page using userId                                                    |
+| 5         | Admin Login & Dashboard Page                                                      |
+
+---
  
 Home-Page 
 ![Screenshot (2043)](https://user-images.githubusercontent.com/111531676/221751824-b3bb73fe-ba78-4c56-8ced-4f671d3dbfce.png)

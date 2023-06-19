@@ -6,9 +6,7 @@ Dress-up.com is an e-commerce website that aims to provide the new generation wi
 
 Author : - 
 Hemensan Mahilange 
-
-Linkdin:- https://www.linkedin.com/in/hemensan-mahilange-4a9499242/
-<br>
+ 
 ---
 
 ## 💫Tech-Stack->
@@ -49,7 +47,7 @@ Linkdin:- https://www.linkedin.com/in/hemensan-mahilange-4a9499242/
 ---
  
 Home-Page 
-![Screenshot (2043)](https://user-images.githubusercontent.com/111531676/221751824-b3bb73fe-ba78-4c56-8ced-4f671d3dbfce.png)
+![Dress-up-hero](https://github.com/9802HEMENSAN/Dress-Up/assets/111531676/b9a0805a-e7d5-4545-b960-e4ed16ff9ca0)
 
 Logo
 ![dressup](https://user-images.githubusercontent.com/111531676/221750345-12ceff28-25f8-4403-949c-71976b6620ba.png)
